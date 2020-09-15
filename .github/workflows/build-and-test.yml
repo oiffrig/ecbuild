@@ -1,4 +1,4 @@
-name: build-and-test
+name: test
 
 on:
   push:
@@ -15,9 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: ls
+      - name: Run CMake
+        run: |
+          mkdir -p build
+          cd build
+          pwd
+          cmake ..
+      
+      - name: Run CTest
+        run: pwd

@@ -25,4 +25,6 @@ jobs:
           cmake ..
       
       - name: Run CTest
-        run: pwd
+        run: |
+          cd build
+          ctest

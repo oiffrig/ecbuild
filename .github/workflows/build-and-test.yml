@@ -1,0 +1,30 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run CMake
+        run: |
+          mkdir -p build
+          cd build
+          pwd
+          cmake ..
+      
+      - name: Run CTest
+        run: |
+          cd build
+          ctest
